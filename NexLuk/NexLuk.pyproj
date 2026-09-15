@@ -23,12 +23,15 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="escudo.py" />
+    <Compile Include="estilos.py" />
     <Compile Include="formateador.py" />
     <Compile Include="inteligencia.py" />
+    <Compile Include="interfaz.py" />
     <Compile Include="lector.py" />
     <Compile Include="memoria_sql.py" />
     <Compile Include="prompts.py" />
     <Compile Include="redactor.py" />
+    <Compile Include="utilidades.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
