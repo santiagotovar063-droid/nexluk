@@ -14,13 +14,12 @@ import streamlit as st
 import traceback
 import io
 import re
-#from gtts import gTTS
 import edge_tts
 import asyncio
 import os
-import asyncio 
-from utilidades import obtener_texto_documento, construir_expediente, generar_voz_neuronal
 
+# Importaciones exactas segun tu estructura de archivos
+from utilidades import obtener_texto_documento, construir_expediente, generar_voz_neuronal
 from lector import Lector
 from escudo import Escudo
 from redactor import Redactor
@@ -28,14 +27,18 @@ from formateador import Formateador
 from prompts import GestorPrompts
 from inteligencia import MotorIA
 from memoria_sql import BovedaSQL
-
 from estilos import aplicar_estilos
-from utilidades import obtener_texto_documento, construir_expediente
 from interfaz import dibujar_sidebar
 
 # =========================================================
 # CONFIGURACION Y ESTILOS
 # =========================================================
+# Nota: Si set_page_config esta en interfaz.py, omitelo aqui. Si marca error, agregalo.
+try:
+    st.set_page_config(page_title="NexLuk Core", layout="wide", initial_sidebar_state="expanded")
+except:
+    pass
+
 aplicar_estilos()
 
 # =========================================================
@@ -165,7 +168,7 @@ if ejecutar:
                 st.success(f"Auditoria finalizada: {len(reportes)} documento(s) analizado(s).")
 
             # -------------------------------------------------
-            # AUDITORIA DE EXPEDIENTE
+            # AUDITORIA DE EXPEDIENTE (Con parche de inyeccion)
             # -------------------------------------------------
             else:
                 with st.spinner("Construyendo expediente documental..."):
@@ -190,9 +193,10 @@ if ejecutar:
                 st.session_state.datos_escudo_expediente = datos_escudo
 
                 gestor_prompts = GestorPrompts()
+                # Inyeccion directa para que la IA nunca pierda el texto
                 prompt_instruccion = gestor_prompts.obtener_prompt(
                     rol=modo_seleccionado,
-                    instruccion_usuario=f"Realiza una auditoria legal integral del expediente completo. Analiza todos los documentos en conjunto y detecta relaciones, contradicciones y riesgos. Aqui esta el contenido exacto del expediente para analizar:\n\n{contenido_expediente}"
+                    instruccion_usuario=f"Realiza una auditoria integral del expediente completo. Analiza todos los documentos en conjunto y detecta relaciones, contradicciones y riesgos. Aqui esta el contenido exacto del expediente para analizar:\n\n{contenido_expediente}"
                 )
 
                 motor_ia = MotorIA(api_key=api_key)
@@ -273,7 +277,7 @@ if st.session_state.reporte_actual:
         st.markdown(st.session_state.reporte_actual)
 
     # =====================================================
-    # CHAT
+    # CHAT Y VOZ NEURONAL
     # =====================================================
     st.markdown("---")
     st.markdown("### Interfaz de Comunicacion NexLuk")
@@ -335,10 +339,7 @@ Responde utilizando exclusivamente la informacion disponible en la auditoria. No
 
                         try:
                             archivo_audio = "respuesta_nexus.mp3"
-                            # Ejecutamos la funcion asincrona que importamos de utilidades.py
                             asyncio.run(generar_voz_neuronal(texto_voz, archivo_audio))
-                            
-                            # Reproducimos en la interfaz
                             st.audio(archivo_audio, format="audio/mp3", autoplay=True)
                         except Exception as error_voz:
                             st.warning(f"No se pudo generar el audio: {error_voz}")
