@@ -2,13 +2,23 @@ def obtener_texto_documento(documento):
     if not documento:
         return ""
 
+    # Intenta buscar 'texto'
+    texto = documento.get("texto")
+    if texto and isinstance(texto, str):
+        return texto
+
+    # Intenta buscar 'contenido'
     contenido = documento.get("contenido")
-    if isinstance(contenido, str):
+    if contenido and isinstance(contenido, str):
         return contenido
 
-    texto = documento.get("texto")
-    if isinstance(texto, str):
-        return texto
+    # Si el Lector lo mando como bytes 'crudo'
+    crudo = documento.get("crudo")
+    if crudo and isinstance(crudo, bytes):
+        try:
+            return crudo.decode('utf-8')
+        except:
+            return str(crudo)
 
     return ""
 

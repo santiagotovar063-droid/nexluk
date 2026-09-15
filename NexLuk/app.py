@@ -187,7 +187,7 @@ if ejecutar:
                 gestor_prompts = GestorPrompts()
                 prompt_instruccion = gestor_prompts.obtener_prompt(
                     rol=modo_seleccionado,
-                    instruccion_usuario="Realiza una auditoria legal integral del expediente completo. Analiza todos los documentos en conjunto y detecta relaciones entre ellos."
+                    instruccion_usuario=f"Realiza una auditoria legal integral del expediente completo. Analiza todos los documentos en conjunto y detecta relaciones, contradicciones y riesgos. Aquí está el contenido exacto del expediente para analizar:\n\n{contenido_expediente}"
                 )
 
                 motor_ia = MotorIA(api_key=api_key)
