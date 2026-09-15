@@ -14,7 +14,12 @@ import streamlit as st
 import traceback
 import io
 import re
-from gtts import gTTS
+#from gtts import gTTS
+import edge_tts
+import asyncio
+import os
+import asyncio 
+from utilidades import obtener_texto_documento, construir_expediente, generar_voz_neuronal
 
 from lector import Lector
 from escudo import Escudo
@@ -329,13 +334,14 @@ Responde utilizando exclusivamente la informacion disponible en la auditoria. No
                         texto_voz = re.sub(r'^\s*-\s+', '', texto_voz, flags=re.MULTILINE)
 
                         try:
-                            tts = gTTS(text=texto_voz, lang="es", tld="com.mx")
-                            audio_buffer = io.BytesIO()
-                            tts.write_to_fp(audio_buffer)
-                            audio_buffer.seek(0)
-                            st.audio(audio_buffer, format="audio/mp3")
-                        except Exception:
-                            pass
+                            archivo_audio = "respuesta_nexus.mp3"
+                            # Ejecutamos la función asíncrona que importamos de utilidades.py
+                            asyncio.run(generar_voz_neuronal(texto_voz, archivo_audio))
+                            
+                            # Reproducimos en la interfaz
+                            st.audio(archivo_audio, format="audio/mp3", autoplay=True)
+                        except Exception as error_voz:
+                            st.warning(f"No se pudo generar el audio: {error_voz}")
 
                     except Exception as e:
                         st.error(f"Error de comunicacion: {str(e)}")

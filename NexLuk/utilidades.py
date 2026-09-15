@@ -1,3 +1,15 @@
+import edge_tts
+import asyncio
+
+async def generar_voz_neuronal(texto, ruta_salida):
+    """
+    Convierte texto a voz neuronal usando Microsoft Edge TTS.
+    Voces disponibles MX: es-MX-JorgeNeural (Hombre), es-MX-DaliaNeural (Mujer)
+    """
+    voz = "es-MX-JorgeNeural" 
+    comunicar = edge_tts.Communicate(texto, voz)
+    await comunicar.save(ruta_salida)
+
 def obtener_texto_documento(documento):
     if not documento:
         return ""
