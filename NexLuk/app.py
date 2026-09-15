@@ -335,7 +335,7 @@ Responde utilizando exclusivamente la informacion disponible en la auditoria. No
 
                         try:
                             archivo_audio = "respuesta_nexus.mp3"
-                            # Ejecutamos la función asíncrona que importamos de utilidades.py
+                            # Ejecutamos la funcion asíncrona que importamos de utilidades.py
                             asyncio.run(generar_voz_neuronal(texto_voz, archivo_audio))
                             
                             # Reproducimos en la interfaz
