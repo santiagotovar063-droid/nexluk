@@ -1,5 +1,4 @@
 """
-=========================================================
 escudo.py
 
 Sistema avanzado de ciberseguridad y extraccion de entidades.
@@ -8,7 +7,6 @@ Realiza analisis estatico local (sin llamadas a IA/tokens) para:
 - Deteccion y clasificacion de IPs.
 - Extraccion limpia de correos electronicos.
 - Evaluacion de nivel de riesgo preliminar.
-=========================================================
 """
 
 import re

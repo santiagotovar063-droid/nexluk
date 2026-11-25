@@ -1,16 +1,16 @@
 import edge_tts
 import asyncio
 
-async def generar_voz_neuronal(texto, ruta_salida):
+async def generar_voz_neuronal(texto, ruta_salida): #Todo este modulo es para generar voz neuronal, se le pasa el texto y la ruta de salida donde se guardara el archivo de audio
     """
     Convierte texto a voz neuronal usando Microsoft Edge TTS.
-    Voces disponibles MX: es-MX-JorgeNeural (Hombre), es-MX-DaliaNeural (Mujer)
+    Voces disponibles: Jorge(Hombre), Dalia (Mujer)
     """
     voz = "es-MX-JorgeNeural" 
     comunicar = edge_tts.Communicate(texto, voz)
     await comunicar.save(ruta_salida)
 
-def obtener_texto_documento(documento):
+def obtener_texto_documento(documento): #En este bloque se define como obtener el texto de un documento, ya sea que venga en 'texto', 'contenido' o 'crudo'
     if not documento:
         return ""
 
@@ -35,7 +35,7 @@ def obtener_texto_documento(documento):
     return ""
 
 
-def construir_expediente(documentos):
+def construir_expediente(documentos): #Se define como debe verse el expediente, con los documentos que se le pasen, y se les da un formato para que sea mas facil de leer
     partes = []
 
     for indice, documento in enumerate(documentos, start=1):

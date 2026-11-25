@@ -1,9 +1,7 @@
 """
-=========================================================
 lector.py
 
-Sistema avanzado de ingestion y normalizacion de archivos.
-=========================================================
+Sistema de lectura y procesamiento de archivos locales.
 """
 
 import email

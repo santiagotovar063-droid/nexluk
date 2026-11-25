@@ -17,9 +17,7 @@ class Formateador:
     def __init__(self):
         pass
 
-    # =========================================================
     # LIMPIEZA GENERAL DE TEXTO
-    # =========================================================
 
     def limpiar_texto(self, texto):
         """
@@ -40,9 +38,8 @@ class Formateador:
         # 4. Retirar espacios en blanco al inicio y final de la cadena
         return texto_limpio.strip()
 
-    # =========================================================
+
     # ESTRUCTURACION DE BLOQUES (UI / REPORTE)
-    # =========================================================
 
     def estructurar_seccion(self, titulo, contenido):
         """

@@ -24,9 +24,8 @@ class MotorIA:
         self.client = genai.Client(api_key=api_key)
         self.modelo = modelo
 
-    # =========================================================
+  
     # EMPAQUETADO MULTIMODAL DE DATOS
-    # =========================================================
 
     def _empacar_documento(self, documento):
         """
@@ -66,9 +65,8 @@ class MotorIA:
 
         return paquete
 
-    # =========================================================
+   
     # EJECUCION DE CONSULTAS Y ANALISIS
-    # =========================================================
 
     def consultar(self, instruccion_final, documento=None):
         """

@@ -1,5 +1,5 @@
 import streamlit as st
-
+#Esta es el diseño de la pagina en general
 def aplicar_estilos():
     st.set_page_config(
         page_title="NexLuk | Core System",

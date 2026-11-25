@@ -1,11 +1,9 @@
 """
-=========================================================
 prompts.py
 
 Gestor centralizado de identidades y comportamientos.
 Define la personalidad de Nexus y adapta el contexto de analisis
 segun el rol seleccionado por el usuario.
-=========================================================
 """
 
 class GestorPrompts:
@@ -23,6 +21,9 @@ class GestorPrompts:
                 "Modo Cotidiano: Actua como un asistente practico y directo. "
                 "Resume el documento proporcionado destacando los puntos mas importantes "
                 "y responde a las preguntas con un lenguaje claro y accesible."
+                "No des explicaciones de mas solo lonecesario osea no muy largo "
+                "recuerda que es algo cotidiano por lo tanto puede ser algo de rapido "
+                "consumo y facil de entender."
             ),
             "ciberseguridad": (
                 "Modo Ciberseguridad: Actua como un analista de ciberseguridad. "

@@ -1,5 +1,4 @@
 """
-=========================================================
 redactor.py
 
 Sistema avanzado de generacion y estructuracion de respuestas.
@@ -8,17 +7,16 @@ Permite:
 - Mantener plantillas estandarizadas para correos, reportes y minutas.
 - Formatear respuestas de texto plano o markdown estructurado.
 - Generar plantillas corporativas con variables dinamicas de forma local.
-=========================================================
 """
 
 class Redactor:
     def __init__(self):
-        # =====================================================
+
         # BANCO DE PLANTILLAS CORPORATIVAS Y TECNICAS
-        # =====================================================
+ 
         self.plantillas = {
             
-            # --- OPERATIVAS / COTIDIANAS ---
+            #  OPERATIVAS / COTIDIANAS
             "correo_formal": (
                 "Asunto: {asunto}\n\n"
                 "Estimado/a {destinatario},\n\n"
@@ -36,7 +34,7 @@ class Redactor:
                 "{remitente}"
             ),
 
-            # --- TECNICAS / CIBERSEGURIDAD ---
+            # TECNICAS / CIBERSEGURIDAD
             "reporte_red": (
                 "REPORTE TECNICO DE DIAGNOSTICO\n"
                 "=========================================================\n"
@@ -61,7 +59,7 @@ class Redactor:
                 "{acciones}\n"
             ),
 
-            # --- ADMINISTRATIVAS / CORPORATIVAS ---
+            #  ADMINISTRATIVAS / CORPORATIVAS 
             "nda_resumido": (
                 "ACUERDO DE CONFIDENCIALIDAD (RESUMEN OPERATIVO)\n"
                 "=========================================================\n"
@@ -71,17 +69,13 @@ class Redactor:
             )
         }
 
-    # =========================================================
-    # OBTENER CATALOGO
-    # =========================================================
+    # OBTENER CATALOGO   
 
     def obtener_catalogo(self):
         """Devuelve las llaves de todas las plantillas disponibles."""
         return list(self.plantillas.keys())
 
-    # =========================================================
     # GENERAR DOCUMENTO / PLANTILLA
-    # =========================================================
 
     def generar(self, tipo_plantilla, **datos):
         """

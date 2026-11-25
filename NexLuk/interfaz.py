@@ -1,6 +1,6 @@
 import streamlit as st
 
-def dibujar_sidebar():
+def dibujar_sidebar():# Aqui se diseña la barra lateral de la aplicacion, con los elementos que se van a mostrar y las opciones que se van a tener
     with st.sidebar:
         st.markdown("## NexLuk Core")
         st.caption("Terminal de Asistencia Hibrida")
