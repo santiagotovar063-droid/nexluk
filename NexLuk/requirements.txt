@@ -1,4 +1,4 @@
-뿃뻃streamlit਍最漀漀最氀攀ⴀ最攀渀愀椀ഀഀ
-google-generativeai਍瀀愀渀搀愀猀ഀഀ
-openpyxl਍爀攀焀甀攀猀琀猀ഀഀ
+streamlit
+google-generativeai
+openpyxl
 edge-tts
