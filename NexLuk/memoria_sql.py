@@ -55,7 +55,7 @@ class BovedaSQL:
             )
         ''')
 
-        # 3. NUEVA: Tabla para datos importantes encontrados por la IA
+        # 3. Tabla para datos importantes encontrados por la IA
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS hallazgos_ia (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -127,11 +127,8 @@ class BovedaSQL:
     def guardar_hallazgos_ia(self, auditoria_id, lista_hallazgos):
         """
         Guarda los datos importantes encontrados por la IA.
-        Espera una lista de diccionarios con el formato:
-        [
-            {"categoria": "Clausula Critica", "importancia": "Alta", "detalle": "Penalizacion del 20% por retraso"},
-            {"categoria": "Fecha Limite", "importancia": "Media", "detalle": "Vencimiento el 15 de diciembre de 2026"}
-        ]
+        Espera una lista de diccionarios con las llaves:
+        categoria, importancia y detalle.
         """
         if not lista_hallazgos:
             return
